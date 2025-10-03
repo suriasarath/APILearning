@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from . models import Product, Policy
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -17,3 +18,13 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         return user
 
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+class PolicySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Policy
+        fields = '__all__'

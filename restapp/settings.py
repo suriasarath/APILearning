@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'serviceone.middleware.JWT_middleware.JWTMiddleware'
 ]
 
+
 ROOT_URLCONF = 'restapp.urls'
 
 TEMPLATES = [
@@ -83,6 +84,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=12),   # Access token valid for 12 hours
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),    # Refresh token valid for 7 days
 }
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASS":("rest_framework_simplejwt.authetication.JWTAuthentication",)
