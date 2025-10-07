@@ -12,7 +12,7 @@ class JWTMiddleware:
 
         token = request.headers.get("Authorization")
         print(token)
-        if request.path in ["/api/token/"]:
+        if request.path in ["/api/token/","/register/"]:
              return self.get_response(request)
 
         if not token:
